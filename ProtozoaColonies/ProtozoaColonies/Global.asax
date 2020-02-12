@@ -1,1 +1,0 @@
-﻿<%@ Application Inherits="ProtozoaColonies.Global" %>
