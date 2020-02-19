@@ -4,7 +4,9 @@
 
 @section scripts {
     <script type="text/javascript">
+        // Function triggered on page load
         $(function () {
+            // Title Animations:
             $('#intro0').fadeIn(1500, function () {
                 $('#intro1').fadeIn(1500, function () {
                     $('#intro2').fadeIn(1500, function () {
@@ -19,6 +21,9 @@
                     });
                 });
             });
+
+            // Canvas:
+            
         });
     </script>
 }
@@ -34,9 +39,10 @@
         <h2 id="intro1" class="display-4">to</h2>
         <h1 id="intro2" class="display-2"> Protozoa Colonies</h1>
         <br />
-        <div id="gameContainer">
-            <img src="~/images/gameboard.png" alt="Mock Gameboard" />
-            <span>A demo of our gameboard</span>
+        <div id="gameContainer" style="width: 100%">
+            @*<img src="~/images/gameboard.png" alt="Mock Gameboard" />
+            <span>A demo of our gameboard</span>*@
+            <canvas style="width: 100%; height: calc(100vh - 300px);"></canvas>
         </div>
 
     </div>
