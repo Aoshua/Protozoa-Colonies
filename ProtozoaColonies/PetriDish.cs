@@ -34,10 +34,16 @@ public class PitriDish  //object to keep track of the board
     }
 	public checkDish()//go to next state
     {
+		//create new dish to return.
 
+		//if they are on the top, sides or bottom don't do anything
+
+		//else go through the rules and save everything on the new dish.
+
+		//once this is done overwrite the old dish and clear the new dish.
     }
 	public shareDish()//give dish back.
     {
-
+		return dish;
     }
 }
