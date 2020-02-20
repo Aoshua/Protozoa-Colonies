@@ -22,7 +22,7 @@ namespace UpdateSquares
             string[10000] data; //hold R for red, G for Green, and B for blue\
 
             //loop through the whole grid
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 //if i < 100 ignore above cubes.
                 if (i < 100)
@@ -33,19 +33,19 @@ namespace UpdateSquares
                         //check right.
                         if (data[(i + 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom right
                         if (data[(i + 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom
                         if (data[(i + 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -55,19 +55,19 @@ namespace UpdateSquares
                         //check left.
                         if (data[(i - 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom left
                         if (data[(i + 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom
                         if (data[(i + 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
 
@@ -78,31 +78,31 @@ namespace UpdateSquares
                         //check left.
                         if (data[(i - 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check right.
                         if (data[(i + 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom left
                         if (data[(i + 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom
                         if (data[(i + 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //bottom right
                         if (data[(i + 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -117,19 +117,19 @@ namespace UpdateSquares
                         //check top
                         if (data[(i - 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top right
                         if (data[(i - 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check right.
                         if (data[(i + 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -139,19 +139,19 @@ namespace UpdateSquares
                         //check top left
                         if (data[(i - 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top
                         if (data[(i - 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check left
                         if (data[(i - 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -161,31 +161,31 @@ namespace UpdateSquares
                         //check top left
                         if (data[(i - 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top
                         if (data[(i - 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top right
                         if (data[(i - 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check left.
                         if (data[(i - 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check right.
                         if (data[(i + 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -199,31 +199,31 @@ namespace UpdateSquares
                         //check top
                         if (data[(i - 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top right
                         if (data[(i - 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check right
                         if (data[(i + 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom
                         if (data[(i + 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom right
                         if (data[(i + 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -233,31 +233,31 @@ namespace UpdateSquares
                         //check top left
                         if (data[(i - 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top
                         if (data[(i - 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check left
                         if (data[(i - 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom left
                         if (data[(i + 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom
                         if (data[(i + 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
@@ -267,49 +267,49 @@ namespace UpdateSquares
                         //check top left
                         if (data[(i - 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top
                         if (data[(i - 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check top right
                         if (data[(i - 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check left
                         if (data[(i - 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check right
                         if (data[(i + 1)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom left
                         if (data[(i + 99)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom
                         if (data[(i + 100)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                         //check bottom right
                         if (data[(i + 101)] != 0)
                         {
-                            varchar[adjAlive] = data[(i + 1)];
+                            colors[adjAlive] = data[(i + 1)];
                             adjAlive++;
                         }
                     }
