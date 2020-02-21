@@ -16,31 +16,51 @@ public class Cell // object to keep track of the squares
 public class PitriDish  //object to keep track of the board
 {
 	private Cell[] dish { get; set; }
-
-	public newDish(int x, int y) //create a new board
+	private int size { get; set; }
+	public PitriDish newDish(int i) //create a new board of i x values and i y values.
 	{
-		dish = new Cell[x, y];
+		dish = new Cell[i, i];
+		return dish;
 	}
-	public cleanDish() //wipe the board
+	public PitriDish cleanDish(PitriDish dish) //wipe the board
     {
-		int i = dish.GetLength();
-		dish = new Cell[i];
+		size = dish.size();
+		cleanedDish = new Cell[size, size];
+		return cleanedDish;
     }
-	public placeCell(int x, int y, string color)//update a cell on clicks
+	public PitriDish placeCell(PitriDish dish, int x, int y, string color)//update a cell on clicks
     {
 		dish[x, y].color = color;
+		return dish;
     }
-	public checkDish()//go to next state
-    {
+	public PitriDish checkDish(PitriDish dish)//go to next state
+	{
+		size = dish.size();
 		//create new dish to return.
+		newDish = new PitriDish(size);
 
-		//if they are on the top, sides or bottom don't do anything
+		// loop through the whole table ( x and y)
+		for (int i = 0; i < size; s++)
+		{
+			for (int j = 0; j < size; j++)
+			{
+				//if they are on the top, sides or bottom don't do anything
+				if(i==0 || i==size || j==0 || j == size)
+                {
+					//these are the edge pieces we are ignoring.
+                }
+                //else go through the rules and save everything on the new dish.
+                else
+                {
 
-		//else go through the rules and save everything on the new dish.
+                }
 
+			}
+		}
 		//once this is done overwrite the old dish and clear the new dish.
+		return newDish;
     }
-	public shareDish()//give dish back.
+	public PitriDish shareDish()//give dish back.
     {
 		return dish;
     }
