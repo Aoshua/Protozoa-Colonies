@@ -46,7 +46,7 @@ namespace Cells
 			foreach (Cell cell in globalDish)
 			{
 				int adjAlive = 0;
-				string[] color = { "000000", "000000", "000000", "000000", "000000", "000000", "000000", "000000" };
+				string[] color = { "ffffff", "ffffff", "ffffff", "ffffff", "ffffff", "ffffff", "ffffff", "ffffff" };
 
 				//if they are on the top, sides or bottom don't do anything
 				if (cell.x == 0 || cell.x == size || cell.y == 0 || cell.y == size)
