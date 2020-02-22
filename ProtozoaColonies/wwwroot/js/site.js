@@ -2,19 +2,19 @@
 $(function () {
 
     // Title Animations:
-    $('#intro0').fadeIn(1500, function () {
-        $('#intro1').fadeIn(1500, function () {
-            $('#intro2').fadeIn(1500, function () {
-                $('#intro0').fadeOut(1000);
-                $('#intro1').fadeOut(1000, function () {
-                    $('#intro2').removeClass('display-2');
-                    $('#intro2').addClass('display-4');
-                    $('#gameContainer').fadeIn(1000);
-                    $('#gameContainer').css("display", "inline-grid");
-                });
-            });
-        });
-    });
+    //$('#intro0').fadeIn(1500, function () {
+    //    $('#intro1').fadeIn(1500, function () {
+    //        $('#intro2').fadeIn(1500, function () {
+    //            $('#intro0').fadeOut(1000);
+    //            $('#intro1').fadeOut(1000, function () {
+    //                $('#intro2').removeClass('display-2');
+    //                $('#intro2').addClass('display-4');
+    //                $('#gameContainer').fadeIn(1000);
+    //                $('#gameContainer').css("display", "inline-grid");
+    //            });
+    //        });
+    //    });
+    //});
 
     // Generate Grid:
     $("#tableContainer").append(generateGrid(50, 50));
@@ -64,4 +64,13 @@ function generateGrid(rows, cols) {
         grid += "</tr>";
     }
     return grid;
+}
+
+// Color Picker:
+var playerColor = "#bf2828"
+function changeColor() {
+    playerColor = document.getElementById("colorPicker").value;
+    console.log(playerColor);
+    document.documentElement.style
+        .setProperty('--player-color', playerColor);
 }
