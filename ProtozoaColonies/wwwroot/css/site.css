@@ -1,6 +1,5 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
+﻿/* Navbar styles
+-------------------------------------------------- */
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -51,8 +50,6 @@ button.accept-policy {
   line-height: inherit;
 }
 
-/* Sticky footer styles
--------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
@@ -69,3 +66,30 @@ body {
   white-space: nowrap;
   line-height: 60px; /* Vertically center the text there */
 }
+
+/* Header styles
+-------------------------------------------------- */
+#intro0, #intro1, #intro2 {
+    display: none;
+}
+
+/* Grid styles
+-------------------------------------------------- */
+.highlighted {
+    background-color: aquamarine;
+}
+
+td {
+    border: 1px solid;
+    width: 20px;
+    height: 20px;
+}
+
+#gameContainer {
+    display: none;
+}
+
+/* REMOVE LATER: Shows grid from start */
+/*#gameContainer {
+        display: inline-grid;
+}*/
