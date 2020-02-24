@@ -17,7 +17,7 @@ namespace Cells
 			{
 				for (int j = 0; j < size; j++)
 				{
-					dish.Add(new Cell(i, j, "FFFFFF"));
+					dish.Add(new Cell(j, i, "FFFFFF"));
 				}
 			}
 			globalDish = dish;
