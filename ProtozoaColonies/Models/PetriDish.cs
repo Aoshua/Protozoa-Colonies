@@ -34,14 +34,15 @@ namespace Cells
 		public void placeCell(int x, int y, string color)//update a cell on clicks
 		{
 			//foreach (Cell cell in globalDish)
-				globalDish[(x * y)].color = color;
+			int offset = (y * size) + x;
+				globalDish[offset].color = color;
 				/*if (globalDish.GetValue.x = x && globalDish.GetValue.y)
 				{
 					globalDish.GetValue.color = color;
 					break;
 				}*/
 		}
-		public void checkDish(PitriDish dish)//go to next state
+		public void checkDish()//go to next state
 		{
 			//create new dish to return.
 			List<Cell> newDish = new List<Cell>();
@@ -63,10 +64,12 @@ namespace Cells
 					int lat = cell.x;
 					int lon = cell.y;
 					string Testcolor = "FFFFFF";
+					int offset = (y * size) + x;
+					newDish[offset].color = cell.color;
 					//////*******************************************************************************************
 
 					//check top left 
-					Testcolor = globalDish[((lat - 1) * (lon - 1))].color;
+					Testcolor = globalDish[(offset-(size+1))].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -74,7 +77,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//check top
-					Testcolor = globalDish[((1) * (lon - 1))].color;
+					Testcolor = globalDish[(offset-size)].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -82,7 +85,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//check top right
-					Testcolor = globalDish[((lat + 1) * (lon - 1))].color;
+					Testcolor = globalDish[(offset-(size-1))].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -90,7 +93,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//left
-					Testcolor = globalDish[((lat - 1) * (lon))].color;
+					Testcolor = globalDish[(offset-1)].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -98,7 +101,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//right
-					Testcolor = globalDish[((lat) * (lon - 1))].color;
+					Testcolor = globalDish[(offset+1)].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -106,7 +109,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//bottom left
-					Testcolor = globalDish[((lat - 1) * (lon + 1))].color;
+					Testcolor = globalDish[(offset+(size-1))].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -114,7 +117,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//bottom
-					Testcolor = globalDish[((lat) * (lon + 1))].color;
+					Testcolor = globalDish[(offset+(size))].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -122,7 +125,7 @@ namespace Cells
 						Testcolor = "ffffff";
 					}
 					//bottom right
-					Testcolor = globalDish[((lat + 1) * (lon + 1))].color;
+					Testcolor = globalDish[(offset+(size+1))].color;
 					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
@@ -133,18 +136,18 @@ namespace Cells
 				//if cell has 0-1 it dies
 				if (adjAlive == 0 || adjAlive == 1)
 				{
-					cell.color = "FFFFFF";
+					newDish[offset].color = "FFFFFF";
 				}
 				//if > 3 it dies
 				else if (adjAlive > 3)
 				{
-					cell.color = "FFFFFF";
+					newDish[offset].color = "FFFFFF";
 				}
 				//otherwise lives
 				else
 				{
 					//if not populated && 3 neighbors, comes to life.
-					if(adjAlive == 3 && cell.color == "FFFFFF")
+					if(adjAlive == 3 && newDish[offset].color == "FFFFFF")
 					{
 
 						//something to save the colors into
@@ -186,7 +189,7 @@ namespace Cells
 
 						//take answer and move it back into the format RGB
 						string newColor = nHR + nHG + nHB;
-						cell.color = newColor;
+						newDish[offset].color = newColor;
 
 					}
 				}
