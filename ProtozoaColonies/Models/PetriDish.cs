@@ -17,7 +17,7 @@ namespace Cells
 			{
 				for (int j = 0; j < size; j++)
 				{
-					dish.Add(new Cell(i, j, "ffffff"));
+					dish.Add(new Cell(i, j, "FFFFFF"));
 				}
 			}
 			globalDish = dish;
@@ -50,7 +50,7 @@ namespace Cells
 			foreach (Cell cell in globalDish)
 			{
 				int adjAlive = 0;
-				string[] color = { "ffffff", "ffffff", "ffffff", "ffffff", "ffffff", "ffffff", "ffffff", "ffffff" };
+				string[] color = { "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF" };
 
 				//if they are on the top, sides or bottom don't do anything
 				if (cell.x == 0 || cell.x == size || cell.y == 0 || cell.y == size)
@@ -62,12 +62,12 @@ namespace Cells
 				{
 					int lat = cell.x;
 					int lon = cell.y;
-					string Testcolor = "ffffff";
+					string Testcolor = "FFFFFF";
 					//////*******************************************************************************************
 
 					//check top left 
 					Testcolor = globalDish[((lat - 1) * (lon - 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -75,7 +75,7 @@ namespace Cells
 					}
 					//check top
 					Testcolor = globalDish[((1) * (lon - 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -83,7 +83,7 @@ namespace Cells
 					}
 					//check top right
 					Testcolor = globalDish[((lat + 1) * (lon - 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -91,7 +91,7 @@ namespace Cells
 					}
 					//left
 					Testcolor = globalDish[((lat - 1) * (lon))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -99,7 +99,7 @@ namespace Cells
 					}
 					//right
 					Testcolor = globalDish[((lat) * (lon - 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -107,7 +107,7 @@ namespace Cells
 					}
 					//bottom left
 					Testcolor = globalDish[((lat - 1) * (lon + 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -115,7 +115,7 @@ namespace Cells
 					}
 					//bottom
 					Testcolor = globalDish[((lat) * (lon + 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -123,7 +123,7 @@ namespace Cells
 					}
 					//bottom right
 					Testcolor = globalDish[((lat + 1) * (lon + 1))].color;
-					if (Testcolor != "ffffff")
+					if (Testcolor != "FFFFFF")
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
@@ -133,30 +133,36 @@ namespace Cells
 				//if cell has 0-1 it dies
 				if (adjAlive == 0 || adjAlive == 1)
 				{
-					cell.color = "ffffff";
+					cell.color = "FFFFFF";
 				}
 				//if > 3 it dies
 				else if (adjAlive > 3)
 				{
-					cell.color = "ffffff";
+					cell.color = "FFFFFF";
 				}
 				//otherwise lives
 				else
 				{
 					//if not populated && 3 neighbors, comes to life.
-					if(adjAlive == 3 && cell.color == "ffffff")
+					if(adjAlive == 3 && cell.color == "FFFFFF")
 					{
+
+						//something to save the colors into
 						int R = 0;
 						int G = 0;
 						int B = 0;
 						//loop through color doing:
 						for (int i = 0; i < 3; i++)
 						{
-							//get the color out of the hex.
 							//seperate the hex to be R G B instead of RGB
-
+							//get color out of hex.
+							string hR = color[i].Substring(0, 1);
+							string hG = color[i].Substring(2, 3);
+							string hB = color[i].Substring(4, 5);
 							//sum all the R's the G's and B's
-
+							R += int.Parse(hR, System.Globalization.NumberStyles.HexNumber);
+							G += int.Parse(hG, System.Globalization.NumberStyles.HexNumber);
+							B += int.Parse(hB, System.Globalization.NumberStyles.HexNumber);
 						}
 
 						//devide by 3 for R G and B.
@@ -173,7 +179,14 @@ namespace Cells
 							B = B / 3;
 						}
 
+						//convert back to hex
+						string nHR = Convert.ToString(R, 16);
+						string nHG = Convert.ToString(G, 16);
+						string nHB = Convert.ToString(B, 16);
+
 						//take answer and move it back into the format RGB
+						string newColor = nHR + nHG + nHB;
+						cell.color = newColor;
 
 					}
 				}
