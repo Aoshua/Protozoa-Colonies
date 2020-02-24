@@ -25,11 +25,15 @@ namespace Cells
 		}
 		public void cleanDish() //wipe the board
 		{
-			newDish(size);
+			//newDish(size);
+			foreach(Cell cell in globalDish)
+			{
+				cell.color = "FFFFFF";
+			}
 		}
 		public void placeCell(int x, int y, string color)//update a cell on clicks
 		{
-			foreach (Cell cell in globalDish)
+			//foreach (Cell cell in globalDish)
 				globalDish[(x * y)].color = color;
 				/*if (globalDish.GetValue.x = x && globalDish.GetValue.y)
 				{
@@ -56,25 +60,125 @@ namespace Cells
 				//else go through the rules and save everything on the new dish.
 				else
 				{
+					int lat = cell.x;
+					int lon = cell.y;
+					string Testcolor = "ffffff";
 					//////*******************************************************************************************
 
 					//check top left 
-
+					Testcolor = globalDish[((lat - 1) * (lon - 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//check top
-
+					Testcolor = globalDish[((1) * (lon - 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//check top right
-
+					Testcolor = globalDish[((lat + 1) * (lon - 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//left
-					
+					Testcolor = globalDish[((lat - 1) * (lon))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//right
-
+					Testcolor = globalDish[((lat) * (lon - 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//bottom left
-
+					Testcolor = globalDish[((lat - 1) * (lon + 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//bottom
-
+					Testcolor = globalDish[((lat) * (lon + 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
 					//bottom right
+					Testcolor = globalDish[((lat + 1) * (lon + 1))].color;
+					if (Testcolor != "ffffff")
+					{
+						color[adjAlive] = Testcolor;
+						adjAlive += 1;
+						Testcolor = "ffffff";
+					}
+				}
+				//if cell has 0-1 it dies
+				if (adjAlive == 0 || adjAlive == 1)
+				{
+					cell.color = "ffffff";
+				}
+				//if > 3 it dies
+				else if (adjAlive > 3)
+				{
+					cell.color = "ffffff";
+				}
+				//otherwise lives
+				else
+				{
+					//if not populated && 3 neighbors, comes to life.
+					if(adjAlive == 3 && cell.color == "ffffff")
+					{
+						int R = 0;
+						int G = 0;
+						int B = 0;
+						//loop through color doing:
+						for (int i = 0; i < 3; i++)
+						{
+							//get the color out of the hex.
+							//seperate the hex to be R G B instead of RGB
+
+							//sum all the R's the G's and B's
+
+						}
+
+						//devide by 3 for R G and B.
+						if (R != 0)
+						{
+							R = R / 3;
+						}
+						if (G != 0)
+						{
+							G = G / 3;
+						}
+						if (B != 0)
+						{
+							B = B / 3;
+						}
+
+						//take answer and move it back into the format RGB
+
+					}
 				}
 			}
+
 			//once this is done overwrite the old dish and clear the new dish.
 			globalDish = newDish;
 		}
