@@ -138,18 +138,18 @@ namespace Cells
 				//if cell has 0-1 it dies
 				if (adjAlive <= 1)
 				{
-					newDish[offset].color = "FFFFFF";
+					newDish[TrueOffset].color = "FFFFFF";
 				}
 				//if > 3 it dies
 				else if (adjAlive > 3)
 				{
-					newDish[offset].color = "FFFFFF";
+					newDish[TrueOffset].color = "FFFFFF";
 				}
 				//otherwise lives
 				else
 				{
 					//if not populated && 3 neighbors, comes to life.
-					if(adjAlive == 3 && newDish[offset].color == "FFFFFF")
+					if(adjAlive == 3 && newDish[TrueOffset].color == "FFFFFF")
 					{
 
 						
