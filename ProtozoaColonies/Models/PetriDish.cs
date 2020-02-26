@@ -54,7 +54,7 @@ namespace Cells
 				string[] color = { "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF" };
 
 				//if they are on the top, sides or bottom don't do anything
-				if (cell.x == 0 || cell.x == size || cell.y == 0 || cell.y == size)
+				if (cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1))
 				{
 					//these are the edge pieces we are ignoring.
 				}
