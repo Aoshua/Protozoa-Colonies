@@ -8,7 +8,7 @@ namespace Cells
 	public class PitriDish  //object to keep track of the board
 	{
 		public List<Cell> globalDish { get; set; }
-		public int size { get; set; }
+		private int size { get; set; }
 
 		public void NewDish(int size) //create a new board of i x values and i y values. work on this.
 		{
