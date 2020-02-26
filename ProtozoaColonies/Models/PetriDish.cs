@@ -10,7 +10,7 @@ namespace Cells
 		public List<Cell> globalDish { get; set; }
 		public int size { get; set; }
 
-		public void newDish(int size) //create a new board of i x values and i y values. work on this.
+		public void NewDish(int size) //create a new board of i x values and i y values. work on this.
 		{
 			List<Cell> dish = new List<Cell>();
 			
@@ -25,7 +25,7 @@ namespace Cells
 			int globalSize = size;
 		}
 
-		public void cleanDish() //wipe the board
+		public void CleanDish() //wipe the board
 		{
 			//newDish(size);
 			foreach(Cell cell in globalDish)
@@ -34,7 +34,7 @@ namespace Cells
 			}
 		}
 
-		public void placeCell(int x, int y, string color)//update a cell on clicks
+		public void PlaceCell(int x, int y, string color)//update a cell on clicks
 		{
 			//foreach (Cell cell in globalDish)
 			int offset = (y * size) + x;
@@ -46,7 +46,7 @@ namespace Cells
 				}*/
 		}
 
-		public void checkDish()//go to next state
+		public void CheckDish()//go to next state
 		{
 			//create new dish to return.
 			List<Cell> newDish = new List<Cell>();
@@ -165,7 +165,7 @@ namespace Cells
 			globalDish = newDish;
 		}
 
-		public List<Cell> shareDish()//give dish back.
+		public List<Cell> ShareDish()//give dish back.
 		{
 			return globalDish;
 		}
