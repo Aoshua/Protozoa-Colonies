@@ -2,51 +2,18 @@
     ViewData["Title"] = "Protozoa Colonies";
 }
 
-@section scripts {
-    <script src="~/js/signalr/dist/browser/signalr.js"></script>
-    <script src="~/js/comm.js"></script>
-    <script type="text/javascript">
-        // Function triggered on page load
-        $(function () {
-            // Title Animations:
-            $('#intro0').fadeIn(1500, function () {
-                $('#intro1').fadeIn(1500, function () {
-                    $('#intro2').fadeIn(1500, function () {
-                        $('#intro0').fadeOut(1000);
-                        $('#intro1').fadeOut(1000, function () {
-                            $('#intro2').removeClass('display-2');
-                            $('#intro2').addClass('display-4');
-                            $('#gameContainer').fadeIn(1000);
-                            $('#gameContainer').css("display", "inline-grid");
-                        });
-
-                    });
-                });
-            });
-
-            // Canvas:
-
-        });
-    </script>
-}
-
-<style>
-
-    #intro0, #intro1, #intro2, #gameContainer {
-        display: none;
-    }
-</style>
 <div class="text-center">
     <div>
         <h2 id="intro0" class="display-4">Welcome</h2>
         <h2 id="intro1" class="display-4">to</h2>
         <h1 id="intro2" class="display-2"> Protozoa Colonies</h1>
         <br />
-        <div id="gameContainer" style="width: 100%">
-            @*<img src="~/images/gameboard.png" alt="Mock Gameboard" />
-                <span>A demo of our gameboard</span>*@
-            <canvas style="width: 100%; height: calc(100vh - 300px);"></canvas>
+        <div id="gameContainer" class="containter">
+            <div style="padding-bottom: 10px;">
+                <span>Choose a color for your colony: </span>
+                <input id="colorPicker" onchange="changeColor()" type="color" name="color" value="#ff0000" />
+            </div>
+            <div id="tableContainer"></div>
         </div>
-
     </div>
 </div>
