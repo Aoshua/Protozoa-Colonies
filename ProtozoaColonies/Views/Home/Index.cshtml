@@ -3,6 +3,8 @@
 }
 
 @section scripts {
+    <script src="~/js/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/comm.js"></script>
     <script type="text/javascript">
         // Function triggered on page load
         $(function () {
@@ -23,12 +25,13 @@
             });
 
             // Canvas:
-            
+
         });
     </script>
 }
 
 <style>
+
     #intro0, #intro1, #intro2, #gameContainer {
         display: none;
     }
@@ -41,7 +44,7 @@
         <br />
         <div id="gameContainer" style="width: 100%">
             @*<img src="~/images/gameboard.png" alt="Mock Gameboard" />
-            <span>A demo of our gameboard</span>*@
+                <span>A demo of our gameboard</span>*@
             <canvas style="width: 100%; height: calc(100vh - 300px);"></canvas>
         </div>
 
