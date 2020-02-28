@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 
 
-namespace Cells
+namespace ProtozoaColonies.Models
 {
 	
-	public class PitriDish  //object to keep track of the board
+	public class PetriDish  //object to keep track of the board
 	{
 		public List<Cell> globalDish { get; set; }
 		private int size { get; set; }
