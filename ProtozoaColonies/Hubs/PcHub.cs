@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 
+
 namespace ProtozoaColonies.Hubs
 {
     public class PcHub : Hub
@@ -15,6 +16,7 @@ namespace ProtozoaColonies.Hubs
         public async Task NextState()
         {
             // push table back to all clients
+            
         }
 
         public async Task SetAuto(bool auto, byte speed)

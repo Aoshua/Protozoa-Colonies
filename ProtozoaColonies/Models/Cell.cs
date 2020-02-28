@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Cells
+namespace ProtozoaColonies.Models
 {
 	public class Cell // object to keep track of the squares
 	{
