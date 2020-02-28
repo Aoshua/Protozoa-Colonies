@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace Cells
+namespace ProtozoaColonies.Models
 {
 	
 	public class PitriDish  //object to keep track of the board
