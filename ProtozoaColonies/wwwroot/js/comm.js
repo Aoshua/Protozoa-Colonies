@@ -3,19 +3,19 @@
 var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
 
 //Disable send button until connection is established
-document.getElementById("sendButton").disabled = true;
+$('sendButton').prop('disabled', true);
 
 connection.on("SendBoard", function (user, message) {
     // access DOM to update board
 });
 
 connection.start().then(function () {
-    document.getElementById("actionBtn").disabled = false;
+    $('sendButton').prop('disabled', true);
 }).catch(function (err) {
     return console.error(err.toString());
 });
 
-document.getElementById("actionBtn").addEventListener("click", function (event) {
+$('#actionBtn').click(function () {
     var color = "red";
     var x = 2;
     var y = 7;
@@ -28,3 +28,7 @@ document.getElementById("actionBtn").addEventListener("click", function (event) 
 
     event.preventDefault();
 });
+
+//document.getElementById("actionBtn").addEventListener("click", function (event) {
+    
+//});
