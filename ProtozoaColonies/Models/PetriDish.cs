@@ -9,6 +9,8 @@ namespace ProtozoaColonies.Models
 	public class PitriDish  //object to keep track of the board
 	{
 		private List<Cell> globalDish { get; set; }
+
+		//private List (System.Collections.Generic.IEnumerable<Cell> globalDish);
 		private int size { get; set; }
 
 		public void NewDish(int size) //create a new board of i x values and i y values. work on this.
@@ -50,10 +52,14 @@ namespace ProtozoaColonies.Models
 		public void CheckDish()//go to next state
 		{
 			//create new dish to return.
-			List<Cell> newDish = new List<Cell>(globalDish);
-			//newDish.AddRange(globalDish);
-			//List<Cell> oldDish = new List<Cell>(globalDish);
-			//globalDish.RemoveRange(0, (size*size));
+			List<Cell> newDish = new List<Cell>(/*globalDish */);
+
+			//add new cells into new dish that are the same as the global dish.
+			foreach (Cell cell in globalDish)
+			{
+				newDish.Add(new Cell(cell.x, cell.y, cell.color));
+			}
+
 			int TrueOffset = 0;
 
 			// loop through the whole table ( x and y)
@@ -66,13 +72,8 @@ namespace ProtozoaColonies.Models
 				//if they are on the top, sides or bottom don't do anything
 				if (!(cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1)))
 				{ 
-					//int lat = cell.x;
-					//int lon = cell.y;
+
 					string Testcolor = "FFFFFF";
-					//int offset = (y * size) + x;
-					
-					//newDish[TrueOffset].color = cell.color;
-					//////*******************************************************************************************
 
 					//check top left 
 					Testcolor = globalDish[(TrueOffset-(size+1))].color;
@@ -157,7 +158,7 @@ namespace ProtozoaColonies.Models
 					{
 
 						//calculate the color and set it into the cell.
-						newDish[TrueOffset].color = CalcColor(color); //this is assigning the globalDish as well as newDish, even when I did oldDish and wiped the globalDish clean?????
+						newDish[TrueOffset].color = CalcColor(color); 
 
 					}
 				}
