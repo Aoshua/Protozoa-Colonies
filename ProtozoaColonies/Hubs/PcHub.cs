@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
+using System;
 
 
 namespace ProtozoaColonies.Hubs
@@ -11,6 +12,8 @@ namespace ProtozoaColonies.Hubs
             // check that table has init
             // if table init, set cell in table
             // push table back to all clients
+
+            Console.WriteLine("Set cell: " + color + " " + x + ", " + y);
         }
 
         public async Task NextState()

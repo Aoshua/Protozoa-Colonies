@@ -5,25 +5,26 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
 //Disable send button until connection is established
 document.getElementById("sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (user, message) {
-    var msg = message.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-    var encodedMsg = user + " says " + msg;
-    var li = document.createElement("li");
-    li.textContent = encodedMsg;
-    document.getElementById("messagesList").appendChild(li);
+connection.on("SendBoard", function (user, message) {
+    // access DOM to update board
 });
 
 connection.start().then(function () {
-    document.getElementById("sendButton").disabled = false;
+    document.getElementById("actionBtn").disabled = false;
 }).catch(function (err) {
     return console.error(err.toString());
 });
 
-document.getElementById("sendButton").addEventListener("click", function (event) {
-    var user = document.getElementById("userInput").value;
-    var message = document.getElementById("messageInput").value;
-    connection.invoke("SendMessage", user, message).catch(function (err) {
+document.getElementById("actionBtn").addEventListener("click", function (event) {
+    var color = "red";
+    var x = 2;
+    var y = 7;
+
+    console.log("actionBtn pressed");
+
+    connection.invoke("SetCell", color, x, y).catch(function (err) {
         return console.error(err.toString());
     });
+
     event.preventDefault();
 });
