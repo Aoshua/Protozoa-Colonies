@@ -1,14 +1,17 @@
-﻿using System;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 
-namespace Cells
+namespace ProtozoaColonies.Models
 {
 	
 	public class PitriDish  //object to keep track of the board
 	{
-		public List<Cell> globalDish { get; set; }
-		public int size { get; set; }
+		private List<Cell> globalDish { get; set; }
+
+		//private List (System.Collections.Generic.IEnumerable<Cell> globalDish);
+		private int size { get; set; }
 
 		public void NewDish(int size) //create a new board of i x values and i y values. work on this.
 		{
@@ -22,7 +25,7 @@ namespace Cells
 				}
 			}
 			globalDish = dish;
-			int globalSize = size;
+			this.size = size;
 		}
 
 		public void CleanDish() //wipe the board
@@ -49,7 +52,14 @@ namespace Cells
 		public void CheckDish()//go to next state
 		{
 			//create new dish to return.
-			List<Cell> newDish = new List<Cell>();
+			List<Cell> newDish = new List<Cell>(/*globalDish */);
+
+			//add new cells into new dish that are the same as the global dish.
+			foreach (Cell cell in globalDish)
+			{
+				newDish.Add(new Cell(cell.x, cell.y, cell.color));
+			}
+
 			int TrueOffset = 0;
 
 			// loop through the whole table ( x and y)
@@ -62,13 +72,8 @@ namespace Cells
 				//if they are on the top, sides or bottom don't do anything
 				if (!(cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1)))
 				{ 
-					//int lat = cell.x;
-					//int lon = cell.y;
+
 					string Testcolor = "FFFFFF";
-					//int offset = (y * size) + x;
-					
-					newDish[TrueOffset].color = cell.color;
-					//////*******************************************************************************************
 
 					//check top left 
 					Testcolor = globalDish[(TrueOffset-(size+1))].color;
@@ -152,9 +157,8 @@ namespace Cells
 					if(adjAlive == 3 && newDish[TrueOffset].color == "FFFFFF")
 					{
 
-						
 						//calculate the color and set it into the cell.
-						newDish[TrueOffset].color = CalcColor(color);
+						newDish[TrueOffset].color = CalcColor(color); 
 
 					}
 				}
@@ -165,9 +169,35 @@ namespace Cells
 			globalDish = newDish;
 		}
 
-		public List<Cell> ShareDish()//give dish back.
+		/*public List<Cell> ShareDish()//give dish back.******************************This returns the list of cells**********************
 		{
 			return globalDish;
+		}*/
+
+		/*public string ShareDish()//give dish back*******************************This returns a jsonString of comma seperated hex values**********************
+		{
+			string colors = "";
+			colors = globalDish[0].color;
+
+			for(int i =1; i<(size*size); i++)
+			{
+				string addon = ", " + globalDish[i].color;
+				colors += addon;
+			}
+			string jsonString;
+			jsonString = JsonSerializer.Serialize(colors);
+			return jsonString;
+		}*/
+		public string ShareDish()//give dish back**********************************This returns a jsonString? of originally an array of Cell Objects********
+		{
+			string json = JsonConvert.SerializeObject(globalDish, Formatting.None);
+			// {
+			//   "x": 5,
+			//   "y": 5,
+			//   "Color": "FFFFFF",
+			// }
+
+			return json;
 		}
 
 		private string CalcColor(string [] color)
@@ -181,9 +211,9 @@ namespace Cells
 			{
 				//seperate the hex to be R G B instead of RGB
 				//get color out of hex.
-				string hR = color[i].Substring(0, 1);
-				string hG = color[i].Substring(2, 3);
-				string hB = color[i].Substring(4, 5);
+				string hR = color[i].Substring(0, 2);
+				string hG = color[i].Substring(2, 2);
+				string hB = color[i].Substring(4, 2);
 				//sum all the R's the G's and B's
 				R += int.Parse(hR, System.Globalization.NumberStyles.HexNumber);
 				G += int.Parse(hG, System.Globalization.NumberStyles.HexNumber);
@@ -208,6 +238,9 @@ namespace Cells
 			string nHR = Convert.ToString(R, 16);
 			string nHG = Convert.ToString(G, 16);
 			string nHB = Convert.ToString(B, 16);
+			if (nHR == "0" || nHR == "1" || nHR == "2" || nHR == "3" || nHR == "4" || nHR == "5" || nHR == "6" || nHR == "7" || nHR == "8" || nHR == "9") nHR = "0" + nHR;
+			if (nHG == "0" || nHG == "1" || nHG == "2" || nHG == "3" || nHG == "4" || nHG == "5" || nHG == "6" || nHG == "7" || nHG == "8" || nHG == "9") nHG = "0" + nHG;
+			if (nHB == "0" || nHB == "1" || nHB == "2" || nHB == "3" || nHB == "4" || nHB == "5" || nHB == "6" || nHB == "7" || nHB == "8" || nHB == "9") nHB = "0" + nHB;
 
 			//take answer and move it back into the format RGB
 			string newColor = nHR + nHG + nHB;

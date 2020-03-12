@@ -1,4 +1,4 @@
-﻿//Functions triggered on page load:
+//Functions triggered on page load:
 $(function () {
 
     // Title Animations: (UNCOMMENT FOR RELEASE)

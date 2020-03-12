@@ -33,5 +33,16 @@ namespace ProtozoaColonies.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        public void TEST()
+        {
+            Models.PitriDish Dish = new Models.PitriDish();
+            Dish.NewDish(10);
+            Dish.PlaceCell(5, 2, "111111");
+            Dish.PlaceCell(4, 2, "222222");
+            Dish.PlaceCell(6, 2, "333333");
+            Dish.CheckDish();
+            Dish.ShareDish();
+        }
     }
 }
