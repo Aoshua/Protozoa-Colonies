@@ -1,4 +1,4 @@
-﻿/* Variables
+/* Variables
 -------------------------------------------------- */
 :root {
     --player-color: #bf2828;
@@ -99,4 +99,10 @@ td {
 /* REMOVE LATER: Shows grid from start */
 #gameContainer {
         display: inline-grid;
+}
+
+.control-panel {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }

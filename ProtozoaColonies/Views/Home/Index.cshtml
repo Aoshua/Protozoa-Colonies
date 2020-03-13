@@ -1,4 +1,4 @@
-﻿@{
+@{
     ViewData["Title"] = "Protozoa Colonies";
 }
 
@@ -9,9 +9,15 @@
         <h1 id="intro2" class="display-2"> Protozoa Colonies</h1>
         <br />
         <div id="gameContainer" class="containter">
-            <div style="padding-bottom: 10px;">
-                <span>Choose a color for your colony: </span>
-                <input id="colorPicker" onchange="changeColor()" type="color" name="color" value="#ff0000" />
+            <div class="control-panel" >
+                <div style="margin: 6px 10px 0px 0px;">
+                    <span>Choose a color for your colony: </span>
+                    <input id="colorPicker" onchange="changeColor()" type="color" name="color" value="#BF2828" />
+                </div>
+                <div>
+                    <button id="btnToggleStatus" type="button" class="btn btn-primary" style="margin-right: 10px">Start</button>
+                    <button id="btnNext" type="button" class="btn btn-primary">Next</button>
+                </div>
             </div>
             <div id="tableContainer"></div>
         </div>
