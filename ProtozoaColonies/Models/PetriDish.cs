@@ -16,6 +16,7 @@ namespace ProtozoaColonies.Models
 		public void NewDish(int size) //create a new board of i x values and i y values. work on this.
 		{
 			List<Cell> dish = new List<Cell>();
+			size += 2;
 			
 			for (int i = 0; i < size; i++)
 			{
@@ -190,7 +191,18 @@ namespace ProtozoaColonies.Models
 		}*/
 		public string ShareDish()//give dish back**********************************This returns a jsonString? of originally an array of Cell Objects********
 		{
-			string json = JsonConvert.SerializeObject(globalDish, Formatting.None);
+			List<Cell> sharedDish = new List<Cell>();
+
+			//add new cells into new dish that are the same as the global dish.
+			foreach (Cell cell in globalDish)
+			{
+				if (!(cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1)))
+				{
+					sharedDish.Add(new Cell((cell.x - 1), (cell.y - 1), cell.color));
+				}
+			}
+
+			string json = JsonConvert.SerializeObject(sharedDish, Formatting.None);
 			// {
 			//   "x": 5,
 			//   "y": 5,
