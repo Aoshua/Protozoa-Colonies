@@ -5,6 +5,12 @@ using System.Timers;
 using System;
 
 
+/**
+ * TODO:
+ * Stop using magic strings
+ * Move PcManager functions to void, use only SerializeBoard() to return
+ * Fix the timer issues
+ */
 namespace ProtozoaColonies.Hubs
 {
     public class PcHub : Hub
@@ -20,6 +26,12 @@ namespace ProtozoaColonies.Hubs
         public async Task NextState()
         {
             PcManager.NextState();
+            await Clients.All.SendAsync("SendBoard", PcManager.SerializeBoard());
+        }
+
+        public async Task ClearBoard()
+        {
+            PcManager.ClearBoard();
             await Clients.All.SendAsync("SendBoard", PcManager.SerializeBoard());
         }
 

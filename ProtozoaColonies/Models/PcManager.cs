@@ -16,6 +16,11 @@ namespace ProtozoaColonies.Models
             dish.NewDish(32);
         }
 
+        public static void ClearBoard()
+        {
+            dish.CleanDish();
+        }
+
         public static string SetCell(string color, int x, int y)
         {
             dish.PlaceCell(x, y, color);

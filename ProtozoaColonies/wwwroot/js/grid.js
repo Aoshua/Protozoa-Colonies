@@ -16,6 +16,10 @@ $(function () {
         advanceGame();
     });
 
+    $('#btnClear').click(function () {
+        clearBoard();
+    });
+
     // Generate Grid:
     $("#tableContainer").append(generateGrid(30, 30));
 

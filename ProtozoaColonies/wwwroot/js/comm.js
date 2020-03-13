@@ -8,6 +8,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
 
 connection.on("SendBoard", function (board) {
     console.log("Server: " + board);
+    UpdateBoard(board);
 });
 
 connection.on("ServerMsg", function (msg) {
@@ -47,6 +48,13 @@ function pauseGame() {
 function setAuto(auto, seconds) {
     console.log("Client: SetAuto " + auto + " " + seconds);
     connection.invoke("SetAuto", auto, seconds).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
+
+function clearBoard() {
+    console.log("Client: ClearBoard");
+    connection.invoke("ClearBoard").catch(function (err) {
         return console.error(err.toString());
     });
 }
