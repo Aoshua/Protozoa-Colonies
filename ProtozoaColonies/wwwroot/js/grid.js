@@ -15,6 +15,9 @@ $(function () {
     $('#btnNext').click(function () {
         advanceGame();
     });
+    $('#btnClear').click(function () {
+        $('td').removeClass('highlighted');
+    });
 
     // Generate Grid:
     $("#tableContainer").append(generateGrid(30, 30));
@@ -27,8 +30,8 @@ $(function () {
             $(this).toggleClass("highlighted");
 
             var index = $("td").index(this);
-            var row = Math.floor((index) / 30) + 1;
-            var col = (index % 30) + 1;
+            var row = Math.floor((index) / 30);
+            var col = (index % 30);
             console.log("That was row " + row + " and col " + col);
 
             return false; // prevent text selection
@@ -38,8 +41,8 @@ $(function () {
                 $(this).toggleClass("highlighted");
 
                 var index = $("td").index(this);
-                var row = Math.floor((index) / 30) + 1;
-                var col = (index % 30) + 1;
+                var row = Math.floor((index) / 30);
+                var col = (index % 30);
                 console.log("That was row " + row + " and col " + col);
             }
         })
@@ -69,10 +72,16 @@ function generateGrid(rows, cols) {
 // Color Picker:
 var playerColor = "#BF2828"
 function changeColor() {
-    playerColor = document.getElementById("colorPicker").value;
-    console.log(playerColor);
-    document.documentElement.style
-        .setProperty('--player-color', playerColor);
+    if (document.getElementById("colorPicker").value != "#ffffff") {
+        playerColor = document.getElementById("colorPicker").value;
+        console.log(playerColor);
+        document.documentElement.style
+            .setProperty('--player-color', playerColor);
+    } else {
+        document.getElementById("colorPicker").value = "#BF2828";
+        alert("Pick a color besides white.");
+    }
+    
 }
 
 function sendCell() {
@@ -102,4 +111,8 @@ function updateGrid(jString) {
 function setColor(x, y) {
     var selectionStr = "#x" + x + "y" + y;
     $(selectionStr).css('background-color', playerColor);
+}
+
+function clearGrid() {
+
 }
