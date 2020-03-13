@@ -1,34 +1,52 @@
 ﻿"use strict";
 
+// Todo remove debug button, should be triggered by a change in HTML table
+
 var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
 
-//Disable send button until connection is established
-$('sendButton').prop('disabled', true);
+// todo: Disable UI components until connection established
 
-connection.on("SendBoard", function (user, message) {
-    // access DOM to update board
+connection.on("SendBoard", function (board) {
+    console.log("Server: " + board);
+});
+
+connection.on("ServerMsg", function (msg) {
+    console.log("Server: " + msg);
 });
 
 connection.start().then(function () {
-    $('sendButton').prop('disabled', true);
+    console.log("Client: connection init");
 }).catch(function (err) {
     return console.error(err.toString());
 });
 
-$('#actionBtn').click(function () {
-    var color = "red";
-    var x = 2;
-    var y = 7;
-
-    console.log("actionBtn pressed");
-
-    connection.invoke("SetCell", color, x, y).catch(function (err) {
+function setCell(color, row, col) {
+    color = color.substring(1);
+    console.log("Client: SetCell " + color + " " + row + "," + col);
+    connection.invoke("SetCell", color, row, col).catch(function (err) {
         return console.error(err.toString());
     });
+}
 
-    event.preventDefault();
-});
+function advanceGame() {
+    console.log("Client: NextState");
+    connection.invoke("NextState").catch(function (err) {
+        return console.error(err.toString());
+    });
+}
 
-//document.getElementById("actionBtn").addEventListener("click", function (event) {
-    
-//});
+function startGame() {
+    setAuto(true, 2);
+}
+
+function pauseGame() {
+    setAuto(false, 2);
+}
+
+// todo allow setAuto to false with no seconds arg
+function setAuto(auto, seconds) {
+    console.log("Client: SetAuto " + auto + " " + seconds);
+    connection.invoke("SetAuto", auto, seconds).catch(function (err) {
+        return console.error(err.toString());
+    });
+}

@@ -30,6 +30,7 @@ $(function () {
             var row = Math.floor((index) / 30) + 1;
             var col = (index % 30) + 1;
             console.log("That was row " + row + " and col " + col);
+            setCell(playerColor, row, col);
 
             return false; // prevent text selection
         })
@@ -41,6 +42,7 @@ $(function () {
                 var row = Math.floor((index) / 30) + 1;
                 var col = (index % 30) + 1;
                 console.log("That was row " + row + " and col " + col);
+                setCell(playerColor, row, col);
             }
         })
         .bind("selectstart", function () {
@@ -73,22 +75,6 @@ function changeColor() {
     console.log(playerColor);
     document.documentElement.style
         .setProperty('--player-color', playerColor);
-}
-
-function sendCell() {
-    // Add send cell logic here
-}
-
-function startGame() {
-    // Add start logic here
-}
-
-function pauseGame() {
-    // Add pause logic here
-}
-
-function advanceGame() {
-    // Add advance logic here
 }
 
 function updateGrid(jString) {
