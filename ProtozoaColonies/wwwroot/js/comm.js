@@ -8,7 +8,7 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
 
 connection.on("SendBoard", function (board) {
     console.log("Server: " + board);
-    UpdateBoard(board);
+    UpdateGrid(board);
 });
 
 connection.on("ServerMsg", function (msg) {

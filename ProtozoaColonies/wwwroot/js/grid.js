@@ -84,7 +84,6 @@ function changeColor() {
 function updateGrid(jString) {
     // Turn json string into object:
     var gridObject = JSON.parse(JSON.stringify(jString));
-    console.log(gridObject);
 
     // foreach element in gridObject, setCellColor(x, y)
 }
