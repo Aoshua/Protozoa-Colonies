@@ -1,21 +1,33 @@
 using System.Collections.Generic;
 using ProtozoaColonies.Hubs;
 using System;
+using Newtonsoft.Json;
 
 namespace ProtozoaColonies.Models
 {
     public static class PcManager
     {
-        private static PetriDish dish;
+        private static PitriDish dish;
         private static PcHub pcHub;
 
-        public static List<Cell> SetCell(string color, int x, int y)
+        static PcManager()
+        {
+            dish = new PitriDish();
+            dish.NewDish(32);
+        }
+
+        public static void ClearBoard()
+        {
+            dish.CleanDish();
+        }
+
+        public static string SetCell(string color, int x, int y)
         {
             dish.PlaceCell(x, y, color);
             return dish.ShareDish();
         }
 
-        public static List<Cell> NextState()
+        public static string NextState()
         {
             dish.CheckDish();
             return dish.ShareDish();
@@ -24,6 +36,11 @@ namespace ProtozoaColonies.Models
         public static void Auto()
         {
             
+        }
+
+        public static string SerializeBoard()
+        {
+            return dish.ShareDish();
         }
     }
 }
