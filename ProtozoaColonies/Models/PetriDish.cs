@@ -40,14 +40,10 @@ namespace ProtozoaColonies.Models
 
 		public void PlaceCell(int x, int y, string color)//update a cell on clicks
 		{
-			//foreach (Cell cell in globalDish)
+			
 			int offset = (y * size) + x;
-				globalDish[offset].color = color;
-				/*if (globalDish.GetValue.x = x && globalDish.GetValue.y)
-				{
-					globalDish.GetValue.color = color;
-					break;
-				}*/
+			globalDish[offset].color = color;
+			
 		}
 
 		public void CheckDish()//go to next state
