@@ -16,6 +16,10 @@ $(function () {
         advanceGame();
     });
 
+    $('#btnClear').click(function () {
+        clearBoard();
+    });
+
     // Generate Grid:
     $("#tableContainer").append(generateGrid(30, 30));
 
@@ -30,6 +34,7 @@ $(function () {
             var row = Math.floor((index) / 30) + 1;
             var col = (index % 30) + 1;
             console.log("That was row " + row + " and col " + col);
+            setCell(playerColor, row, col);
 
             return false; // prevent text selection
         })
@@ -41,6 +46,7 @@ $(function () {
                 var row = Math.floor((index) / 30) + 1;
                 var col = (index % 30) + 1;
                 console.log("That was row " + row + " and col " + col);
+                setCell(playerColor, row, col);
             }
         })
         .bind("selectstart", function () {
@@ -75,26 +81,9 @@ function changeColor() {
         .setProperty('--player-color', playerColor);
 }
 
-function sendCell() {
-    // Add send cell logic here
-}
-
-function startGame() {
-    // Add start logic here
-}
-
-function pauseGame() {
-    // Add pause logic here
-}
-
-function advanceGame() {
-    // Add advance logic here
-}
-
 function updateGrid(jString) {
     // Turn json string into object:
     var gridObject = JSON.parse(JSON.stringify(jString));
-    console.log(gridObject);
 
     // foreach element in gridObject, setCellColor(x, y)
 }
