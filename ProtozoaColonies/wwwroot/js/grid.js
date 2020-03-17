@@ -20,7 +20,7 @@ $(function () {
     });
 
     $('#btnClear').click(function () {
-        clearBoard();
+        $('td').removeClass('highlighted');
     });
 
     // Generate Grid:
@@ -36,7 +36,6 @@ $(function () {
             var index = $("td").index(this);
             var row = Math.floor((index) / 30);
             var col = (index % 30);
-            console.log("That was row " + row + " and col " + col);
             setCell(playerColor, row, col);
 
             return false; // prevent text selection
@@ -48,7 +47,6 @@ $(function () {
                 var index = $("td").index(this);
                 var row = Math.floor((index) / 30);
                 var col = (index % 30);
-                console.log("That was row " + row + " and col " + col);
                 setCell(playerColor, row, col);
             }
         })
@@ -93,6 +91,7 @@ function changeColor() {
 function updateGrid(jString) {
     // Turn json string into object:
     var gridObject = JSON.parse(JSON.stringify(jString));
+    console.log(gridObject);
 
     // foreach element in gridObject, setCellColor(x, y)
 }
@@ -102,6 +101,3 @@ function setColor(x, y) {
     $(selectionStr).css('background-color', playerColor);
 }
 
-function clearGrid() {
-
-}
