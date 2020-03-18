@@ -7,12 +7,12 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
 // todo: Disable UI components until connection established
 
 connection.on("SendBoard", function (board) {
-    console.log("Server: " + board);
-    UpdateGrid(board);
+    console.log("Server board: " + board);
+    updateGrid(board);
 });
 
 connection.on("ServerMsg", function (msg) {
-    console.log("Server: " + msg);
+    console.log("Server message: " + msg);
 });
 
 connection.start().then(function () {

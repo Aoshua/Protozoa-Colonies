@@ -85,19 +85,24 @@ function changeColor() {
         document.getElementById("colorPicker").value = "#BF2828";
         alert("Pick a color besides white.");
     }
-    
 }
 
 function updateGrid(jString) {
     // Turn json string into object:
-    var gridObject = JSON.parse(JSON.stringify(jString));
-    console.log(gridObject);
+    var gridObject = JSON.parse(jString);
+    console.log("Update Grid called.");
 
-    // foreach element in gridObject, setCellColor(x, y)
+    for (i = 0; i < gridObject.length; i++) {
+        //console.log("Cell x:" + gridObject[i].x + " y: " + gridObject[i].y);
+        setCellColor(gridObject[i].x, gridObject[i].y, gridObject[i].color);
+    }
 }
 
-function setColor(x, y) {
+function setCellColor(x, y, color) {
+    console.log("Set Cell Color called.");
     var selectionStr = "#x" + x + "y" + y;
-    $(selectionStr).css('background-color', playerColor);
+    //console.log("Redraw Grid: " + x + " " + y + " " + color);
+    $(selectionStr).css('background-color', color);
 }
+
 
