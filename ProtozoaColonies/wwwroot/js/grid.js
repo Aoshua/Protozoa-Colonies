@@ -32,7 +32,6 @@ $(function () {
             var col = (index % 30);
 
             setCell(playerColor, row, col);
-            highlightCell(row + 1, col + 1, playerColor);
             return false; // prevent text selection
         })
         .mouseover(function () {
@@ -40,8 +39,8 @@ $(function () {
                 var index = $("td").index(this);
                 var row = Math.floor((index) / 30);
                 var col = (index % 30);
+
                 setCell(playerColor, row, col);
-                highlightCell(row + 1, col + 1, playerColor);
             }
         })
         .bind("selectstart", function () {
@@ -57,9 +56,9 @@ $(function () {
 // Draw grid:
 function generateGrid(rows, cols) {
     var grid = "<table>";
-    for (row = 1; row <= rows; row++) {
+    for (row = 0; row < rows; row++) {
         grid += "<tr id='row_" + row + "'>"; // e.g. row_3
-        for (col = 1; col <= cols; col++) {
+        for (col = 0; col < cols; col++) {
             grid += "<td id='x" + row + "y" + col + "'></td>"; // e.g. x3y5 meaning row 3, column 5
         }
         grid += "</tr>";
@@ -86,26 +85,15 @@ function updateGrid(jString) {
     var gridObject = JSON.parse(jString);
     console.log("Update Grid called.");
 
-    for (i = 0; i < gridObject.length; i++) {
-        //console.log("Cell x:" + gridObject[i].x + " y: " + gridObject[i].y);
-        setCellColor(gridObject[i].x, gridObject[i].y, gridObject[i].color);
+    for (const cell of gridObject) {
+        console.log("Cell x:" + cell.x + " y: " + cell.y + " color: " + cell.color);
+        setCellColor(cell.x, cell.y, cell.color);
     }
 }
 
-// Called for each cell
 function setCellColor(x, y, color) {
     var selectionStr = "#x" + x + "y" + y;
-    //console.log("Redraw Grid: " + x + " " + y + " " + color);
-    $(selectionStr).css('background-color', color);
-}
-
-// Set for selected cells
-function highlightCell(x, y, color) {
-    var selectionStr = "#x" + x + "y" + y;
-    //console.log("Redraw Grid: " + x + " " + y + " " + color);
-    if ($(selectionStr).css('background-color') != "rgb(191, 40, 40)") {
-        $(selectionStr).css('background-color', color);
-    } else {
-        $(selectionStr).css('background-color', "#fff");
-    }
+    var hexColor = "#" + color;
+    //console.log("Redraw Grid: " + x + " " + y + " " + hexColor);
+    $(selectionStr).css('background-color', hexColor);
 }

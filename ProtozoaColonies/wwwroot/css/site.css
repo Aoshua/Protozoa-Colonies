@@ -81,10 +81,6 @@ body {
 
 /* Grid styles
 -------------------------------------------------- */
-/*.highlighted {
-    background-color: var(--player-color);
-}*/
-
 td {
     border: 1px solid;
     width: 20px;

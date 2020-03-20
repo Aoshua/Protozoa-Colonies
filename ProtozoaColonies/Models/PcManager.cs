@@ -13,7 +13,7 @@ namespace ProtozoaColonies.Models
         static PcManager()
         {
             dish = new PitriDish();
-            dish.NewDish(32);
+            dish.NewDish(30);
         }
 
         public static void ClearBoard()
