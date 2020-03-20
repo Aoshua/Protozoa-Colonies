@@ -16,7 +16,7 @@ $(function () {
         advanceGame();
     });
     $('#btnClear').click(function () {
-        $('td').removeClass('highlighted');
+        clearBoard();
     });
 
     $('#btnClear').click(function () {
@@ -99,7 +99,6 @@ function updateGrid(jString) {
 }
 
 function setCellColor(x, y, color) {
-    console.log("Set Cell Color called.");
     var selectionStr = "#x" + x + "y" + y;
     //console.log("Redraw Grid: " + x + " " + y + " " + color);
     $(selectionStr).css('background-color', color);
