@@ -16,10 +16,6 @@ $(function () {
         advanceGame();
     });
     $('#btnClear').click(function () {
-        $('td').removeClass('highlighted');
-    });
-
-    $('#btnClear').click(function () {
         clearBoard();
     });
 
@@ -31,24 +27,19 @@ $(function () {
     $("td")
         .mousedown(function () {
             isMouseDown = true;
-            $(this).toggleClass("highlighted");
-
             var index = $("td").index(this);
             var row = Math.floor((index) / 30);
             var col = (index % 30);
-            console.log("That was row " + row + " and col " + col);
-            setCell(playerColor, row, col);
 
+            setCell(playerColor, row, col);
             return false; // prevent text selection
         })
         .mouseover(function () {
             if (isMouseDown) {
-                $(this).toggleClass("highlighted");
-
                 var index = $("td").index(this);
                 var row = Math.floor((index) / 30);
                 var col = (index % 30);
-                console.log("That was row " + row + " and col " + col);
+
                 setCell(playerColor, row, col);
             }
         })
@@ -65,9 +56,9 @@ $(function () {
 // Draw grid:
 function generateGrid(rows, cols) {
     var grid = "<table>";
-    for (row = 1; row <= rows; row++) {
+    for (row = 0; row < rows; row++) {
         grid += "<tr id='row_" + row + "'>"; // e.g. row_3
-        for (col = 1; col <= cols; col++) {
+        for (col = 0; col < cols; col++) {
             grid += "<td id='x" + row + "y" + col + "'></td>"; // e.g. x3y5 meaning row 3, column 5
         }
         grid += "</tr>";
@@ -87,21 +78,22 @@ function changeColor() {
         document.getElementById("colorPicker").value = "#BF2828";
         alert("Pick a color besides white.");
     }
-    
 }
 
 function updateGrid(jString) {
     // Turn json string into object:
-    var gridObject = JSON.parse(JSON.stringify(jString));
+    var gridObject = JSON.parse(jString);
+    console.log("Update Grid called.");
 
-    // foreach element in gridObject, setCellColor(x, y)
+    for (const cell of gridObject) {
+        console.log("Cell x:" + cell.x + " y: " + cell.y + " color: " + cell.color);
+        setCellColor(cell.x, cell.y, cell.color);
+    }
 }
 
-function setColor(x, y) {
+function setCellColor(x, y, color) {
     var selectionStr = "#x" + x + "y" + y;
-    $(selectionStr).css('background-color', playerColor);
-}
-
-function clearGrid() {
-
+    var hexColor = "#" + color;
+    //console.log("Redraw Grid: " + x + " " + y + " " + hexColor);
+    $(selectionStr).css('background-color', hexColor);
 }
