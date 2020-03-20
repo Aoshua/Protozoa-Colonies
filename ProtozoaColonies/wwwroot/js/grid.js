@@ -19,10 +19,6 @@ $(function () {
         clearBoard();
     });
 
-    $('#btnClear').click(function () {
-        $('td').removeClass('highlighted');
-    });
-
     // Generate Grid:
     $("#tableContainer").append(generateGrid(30, 30));
 
