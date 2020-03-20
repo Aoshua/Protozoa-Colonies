@@ -31,23 +31,21 @@ $(function () {
     $("td")
         .mousedown(function () {
             isMouseDown = true;
-            $(this).toggleClass("highlighted");
-
             var index = $("td").index(this);
             var row = Math.floor((index) / 30);
             var col = (index % 30);
-            setCell(playerColor, row, col);
 
+            setCell(playerColor, row, col);
+            highlightCell(row + 1, col + 1, playerColor);
             return false; // prevent text selection
         })
         .mouseover(function () {
             if (isMouseDown) {
-                $(this).toggleClass("highlighted");
-
                 var index = $("td").index(this);
                 var row = Math.floor((index) / 30);
                 var col = (index % 30);
                 setCell(playerColor, row, col);
+                highlightCell(row + 1, col + 1, playerColor);
             }
         })
         .bind("selectstart", function () {
@@ -98,10 +96,20 @@ function updateGrid(jString) {
     }
 }
 
+// Called for each cell
 function setCellColor(x, y, color) {
     var selectionStr = "#x" + x + "y" + y;
     //console.log("Redraw Grid: " + x + " " + y + " " + color);
     $(selectionStr).css('background-color', color);
 }
 
-
+// Set for selected cells
+function highlightCell(x, y, color) {
+    var selectionStr = "#x" + x + "y" + y;
+    //console.log("Redraw Grid: " + x + " " + y + " " + color);
+    if ($(selectionStr).css('background-color') != "rgb(191, 40, 40)") {
+        $(selectionStr).css('background-color', color);
+    } else {
+        $(selectionStr).css('background-color', "#fff");
+    }
+}

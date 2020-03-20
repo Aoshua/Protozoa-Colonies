@@ -81,10 +81,9 @@ body {
 
 /* Grid styles
 -------------------------------------------------- */
-.highlighted {
-    /*background-color: aquamarine;*/
+/*.highlighted {
     background-color: var(--player-color);
-}
+}*/
 
 td {
     border: 1px solid;
@@ -98,7 +97,7 @@ td {
 
 /* REMOVE LATER: Shows grid from start */
 #gameContainer {
-        display: inline-grid;
+    display: inline-grid;
 }
 
 .control-panel {
