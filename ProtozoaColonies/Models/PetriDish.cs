@@ -229,26 +229,19 @@ namespace ProtozoaColonies.Models
 			}
 
 			//devide by 3 for R G and B.
-			if (R != 0)
-			{
-				R = R / 3;
-			}
-			if (G != 0)
-			{
-				G = G / 3;
-			}
-			if (B != 0)
-			{
-				B = B / 3;
-			}
+
+			R = R / 3;
+			G = G / 3;
+			B = B / 3;
 
 			//convert back to hex
 			string nHR = Convert.ToString(R, 16);
 			string nHG = Convert.ToString(G, 16);
 			string nHB = Convert.ToString(B, 16);
-			if (nHR == "0" || nHR == "1" || nHR == "2" || nHR == "3" || nHR == "4" || nHR == "5" || nHR == "6" || nHR == "7" || nHR == "8" || nHR == "9") nHR = "0" + nHR;
-			if (nHG == "0" || nHG == "1" || nHG == "2" || nHG == "3" || nHG == "4" || nHG == "5" || nHG == "6" || nHG == "7" || nHG == "8" || nHG == "9") nHG = "0" + nHG;
-			if (nHB == "0" || nHB == "1" || nHB == "2" || nHB == "3" || nHB == "4" || nHB == "5" || nHB == "6" || nHB == "7" || nHB == "8" || nHB == "9") nHB = "0" + nHB;
+			
+			if (nHR.Length == 1) nHR = "0" + nHR;
+			if (nHG.Length == 1) nHG = "0" + nHG;
+			if (nHB.Length == 1) nHB = "0" + nHB;
 
 			//take answer and move it back into the format RGB
 			string newColor = nHR + nHG + nHB;
