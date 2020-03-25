@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
 using ProtozoaColonies.Models;
-using System.Timers;
 using System;
 
 
@@ -15,7 +14,6 @@ namespace ProtozoaColonies.Hubs
 {
     public class PcHub : Hub
     {
-        private static System.Timers.Timer aTimer;
 
         public async Task SetCell(string color, byte x, byte y)
         {
@@ -37,18 +35,8 @@ namespace ProtozoaColonies.Hubs
 
         public async Task SetAuto(bool auto, int seconds)
         {
-            
-            aTimer = new System.Timers.Timer(seconds * 1000);
-            aTimer.Elapsed += ATimer_Elapsed;
-            aTimer.AutoReset = true;
-            aTimer.Enabled = auto;
-
+            PcManager.Auto(auto, seconds);
             await Clients.All.SendAsync("ServerMsg", "Timer at rate of " + seconds + " " + auto);
-        }
-
-        private async void ATimer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            await NextState();
         }
     }
 }

@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ProtozoaColonies.Hubs;
+using Microsoft.AspNetCore.SignalR;
+using ProtozoaColonies.Models;
 
 namespace ProtozoaColonies
 {
@@ -54,6 +56,14 @@ namespace ProtozoaColonies
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+
+            app.Use(async (context, next) =>
+            {
+                var hubContext = context.RequestServices
+                                        .GetRequiredService<IHubContext<PcHub>>();
+
+                PcManager.CreateTimer(hubContext);
             });
         }
     }
