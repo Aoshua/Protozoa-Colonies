@@ -195,7 +195,7 @@ namespace ProtozoaColonies.Models
 			{
 				if (!(cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1)))
 				{
-					sharedDish.Add(new Cell((cell.x), (cell.y), cell.color));
+					sharedDish.Add(new Cell((cell.x-1), (cell.y-1), cell.color));
 				}
 			}
 
