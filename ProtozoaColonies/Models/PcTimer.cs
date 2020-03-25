@@ -23,7 +23,7 @@ namespace ProtozoaColonies.Models
         public void SetTimer(int ms)
         {
             // Create a timer with a two second interval.
-            aTimer = new System.Timers.Timer(ms);
+            aTimer = new Timer(ms);
             // Hook up the Elapsed event for the timer. 
             aTimer.Elapsed += OnTimedEvent;
             aTimer.AutoReset = true;
@@ -37,11 +37,13 @@ namespace ProtozoaColonies.Models
         public void StartTimer()
         {
             aTimer.Enabled = true;
+            //aTimer.Start();
         }
 
         public void StopTimer()
         {
             aTimer.Enabled = false;
+            //aTimer.Stop();
         }
     }
 }

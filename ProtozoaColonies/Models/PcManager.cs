@@ -9,7 +9,6 @@ namespace ProtozoaColonies.Models
     public static class PcManager
     {
         private static PitriDish dish;
-        private static PcHub pcHub;
         private static PcTimer pcTimer;
 
         static PcManager()
