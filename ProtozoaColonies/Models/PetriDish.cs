@@ -9,6 +9,7 @@ namespace ProtozoaColonies.Models
 	public class PitriDish  //object to keep track of the board
 	{
 		private List<Cell> globalDish { get; set; }
+		private const string BLANK_COLOR = "FFFFFF";
 
 		//private List (System.Collections.Generic.IEnumerable<Cell> globalDish);
 		private int size { get; set; }
@@ -22,7 +23,7 @@ namespace ProtozoaColonies.Models
 			{
 				for (int j = 0; j < size; j++)
 				{
-					dish.Add(new Cell(j, i, "FFFFFF"));
+					dish.Add(new Cell(j, i, BLANK_COLOR));
 				}
 			}
 			globalDish = dish;
@@ -34,7 +35,7 @@ namespace ProtozoaColonies.Models
 			//newDish(size);
 			foreach(Cell cell in globalDish)
 			{
-				cell.color = "FFFFFF";
+				cell.color = BLANK_COLOR;
 			}
 		}
 
@@ -64,94 +65,94 @@ namespace ProtozoaColonies.Models
 			{
 				
 				int adjAlive = 0;
-				string[] color = { "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF", "FFFFFF" };
+				string[] color = { BLANK_COLOR, BLANK_COLOR, BLANK_COLOR, BLANK_COLOR, BLANK_COLOR, BLANK_COLOR, BLANK_COLOR, BLANK_COLOR };
 
 				//if they are on the top, sides or bottom don't do anything
 				if (!(cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1)))
 				{ 
 
-					string Testcolor = "FFFFFF";
+					string Testcolor = BLANK_COLOR;
 
 					//check top left 
 					Testcolor = globalDish[(TrueOffset-(size+1))].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//check top
 					Testcolor = globalDish[(TrueOffset-size)].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//check top right
 					Testcolor = globalDish[(TrueOffset-(size-1))].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//left
 					Testcolor = globalDish[(TrueOffset-1)].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//right
 					Testcolor = globalDish[(TrueOffset+1)].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//bottom left
 					Testcolor = globalDish[(TrueOffset+(size-1))].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//bottom
 					Testcolor = globalDish[(TrueOffset+(size))].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 					//bottom right
 					Testcolor = globalDish[(TrueOffset+(size+1))].color;
-					if (Testcolor != "FFFFFF")
+					if (Testcolor != BLANK_COLOR)
 					{
 						color[adjAlive] = Testcolor;
 						adjAlive += 1;
-						Testcolor = "FFFFFF";
+						Testcolor = BLANK_COLOR;
 					}
 				}
 				//if cell has 0-1 it dies
 				if (adjAlive <= 1)
 				{
-					newDish[TrueOffset].color = "FFFFFF";
+					newDish[TrueOffset].color = BLANK_COLOR;
 				}
 				//if > 3 it dies
 				else if (adjAlive > 3)
 				{
-					newDish[TrueOffset].color = "FFFFFF";
+					newDish[TrueOffset].color = BLANK_COLOR;
 				}
 				//otherwise lives
 				else
 				{
 					//if not populated && 3 neighbors, comes to life.
-					if(adjAlive == 3 && newDish[TrueOffset].color == "FFFFFF")
+					if(adjAlive == 3 && newDish[TrueOffset].color == BLANK_COLOR)
 					{
 
 						//calculate the color and set it into the cell.
