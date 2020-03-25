@@ -40,7 +40,8 @@ namespace ProtozoaColonies.Models
 
 		public void PlaceCell(int x, int y, string color)//update a cell on clicks
 		{
-			
+			x = x + 1;
+			y = y + 1;
 			int offset = (y * size) + x;
 			globalDish[offset].color = color;
 			
