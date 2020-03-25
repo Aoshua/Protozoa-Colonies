@@ -15,11 +15,14 @@ namespace ProtozoaColonies.Models
         {
             dish = new PitriDish();
             dish.NewDish(30);
+<<<<<<< Updated upstream
         }
 
         public static void CreateTimer(IHubContext<PcHub> hubContext)
         {
             pcTimer = new PcTimer(hubContext);
+=======
+>>>>>>> Stashed changes
         }
 
         public static void ClearBoard()
