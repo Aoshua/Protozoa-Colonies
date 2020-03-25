@@ -2,7 +2,10 @@
 
 // Todo remove debug button, should be triggered by a change in HTML table
 
-var connection = new signalR.HubConnectionBuilder().withUrl("/pchub").build();
+var connection = new signalR.HubConnectionBuilder()
+    .configureLogging(signalR.LogLevel.Debug)
+    .withUrl("\pcdev/pchub")
+    .build();
 
 // todo: Disable UI components until connection established
 
