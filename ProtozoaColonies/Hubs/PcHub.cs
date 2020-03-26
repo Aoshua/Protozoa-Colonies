@@ -33,10 +33,16 @@ namespace ProtozoaColonies.Hubs
             await Clients.All.SendAsync("SendBoard", PcManager.SerializeBoard());
         }
 
-        public async Task SetAuto(bool auto, int seconds)
+        public async Task StartTimer(int seconds)
         {
-            PcManager.Auto(auto, seconds);
-            await Clients.All.SendAsync("ServerMsg", "Timer at rate of " + seconds + " " + auto);
+            PcManager.StartTimer(seconds);
+            await Clients.All.SendAsync("ServerMsg", "Timer started at rate of " + seconds + " seconds.");
+        }
+
+        public async Task StopTimer()
+        {
+            PcManager.StopTimer();
+            await Clients.All.SendAsync("ServerMsg", "Timer stopped.");
         }
     }
 }

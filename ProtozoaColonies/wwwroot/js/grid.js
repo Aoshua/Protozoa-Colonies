@@ -86,7 +86,6 @@ function updateGrid(jString) {
     console.log("Update Grid called.");
 
     for (const cell of gridObject) {
-        console.log("Cell x:" + cell.x + " y: " + cell.y + " color: " + cell.color);
         setCellColor(cell.x, cell.y, cell.color);
     }
 }

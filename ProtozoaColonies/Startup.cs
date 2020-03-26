@@ -63,7 +63,7 @@ namespace ProtozoaColonies
                 var hubContext = context.RequestServices
                                         .GetRequiredService<IHubContext<PcHub>>();
 
-                PcManager.CreateTimer(hubContext);
+                PcManager.InitTimerHubContext(hubContext);
             });
         }
     }

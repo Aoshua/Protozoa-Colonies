@@ -15,14 +15,11 @@ namespace ProtozoaColonies.Models
         {
             dish = new PitriDish();
             dish.NewDish(30);
-<<<<<<< Updated upstream
         }
 
-        public static void CreateTimer(IHubContext<PcHub> hubContext)
+        public static void InitTimerHubContext(IHubContext<PcHub> hubContext)
         {
             pcTimer = new PcTimer(hubContext);
-=======
->>>>>>> Stashed changes
         }
 
         public static void ClearBoard()
@@ -42,19 +39,19 @@ namespace ProtozoaColonies.Models
             return dish.ShareDish();
         }
 
-        public static void Auto(bool auto, int seconds)
-        {
-            const int SEC_TO_MS = 1000;
-            pcTimer.SetTimer(seconds * SEC_TO_MS);
-            if (auto)
-                pcTimer.StartTimer();
-            else
-                pcTimer.StopTimer();
-        }
-
         public static string SerializeBoard()
         {
             return dish.ShareDish();
+        }
+
+        public static void StartTimer(int seconds)
+        {
+            pcTimer.StartTimer(seconds);
+        }
+
+        public static void StopTimer()
+        {
+            pcTimer.StopTimer();
         }
     }
 }

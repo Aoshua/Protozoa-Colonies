@@ -2,9 +2,11 @@
 
 // Todo remove debug button, should be triggered by a change in HTML table
 
+// If publishing, change the .withUrl("\pcdev/pchub")
+// todo fix IIS Express WithURL and Publish WithURL difference
 var connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
-    .withUrl("\pcdev/pchub")
+    .withUrl("\pchub")
     .build();
 
 // todo: Disable UI components until connection established
@@ -40,17 +42,24 @@ function advanceGame() {
 }
 
 function startGame() {
-    setAuto(true, 2);
+    startTimer(2);
 }
 
 function pauseGame() {
-    setAuto(false, 2);
+    stopTimer();
 }
 
 // todo allow setAuto to false with no seconds arg
-function setAuto(auto, seconds) {
-    console.log("Client: SetAuto " + auto + " " + seconds);
-    connection.invoke("SetAuto", auto, seconds).catch(function (err) {
+function startTimer(seconds) {
+    console.log("Client: StartTimer " + seconds);
+    connection.invoke("StartTimer", seconds).catch(function (err) {
+        return console.error(err.toString());
+    });
+}
+
+function stopTimer() {
+    console.log("Client: StopTimer");
+    connection.invoke("StopTimer").catch(function (err) {
         return console.error(err.toString());
     });
 }

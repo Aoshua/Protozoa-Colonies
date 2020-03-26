@@ -13,37 +13,32 @@ namespace ProtozoaColonies.Models
     public class PcTimer
     {
         private readonly IHubContext<PcHub> _hubContext;
-        private static System.Timers.Timer aTimer;
+        private System.Timers.Timer aTimer;
 
         public PcTimer(IHubContext<PcHub> hubContext)
         {
             this._hubContext = hubContext;
-        }
-
-        public void SetTimer(int ms)
-        {
-            // Create a timer with a two second interval.
-            aTimer = new Timer(ms);
-            // Hook up the Elapsed event for the timer. 
+            aTimer = new Timer();
             aTimer.Elapsed += OnTimedEvent;
+            aTimer.Enabled = false;
             aTimer.AutoReset = true;
         }
 
-        private async void OnTimedEvent(Object source, ElapsedEventArgs e)
+        public void StartTimer(int sec)
         {
-            await _hubContext.Clients.All.SendAsync("SendBoard", PcManager.NextState());
-        }
-
-        public void StartTimer()
-        {
+            const short SEC_TO_MS = 1000;
+            aTimer.Interval = sec * SEC_TO_MS;
             aTimer.Enabled = true;
-            //aTimer.Start();
         }
 
         public void StopTimer()
         {
             aTimer.Enabled = false;
-            //aTimer.Stop();
+        }
+
+        private async void OnTimedEvent(Object source, ElapsedEventArgs e)
+        {
+            await _hubContext.Clients.All.SendAsync("SendBoard", PcManager.NextState());
         }
     }
 }
