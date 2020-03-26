@@ -58,7 +58,7 @@ namespace ProtozoaColonies
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.Use(async (context, next) =>
+            app.Use( async (context, next) =>
             {
                 var hubContext = context.RequestServices
                                         .GetRequiredService<IHubContext<PcHub>>();

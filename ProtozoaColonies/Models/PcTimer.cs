@@ -28,11 +28,13 @@ namespace ProtozoaColonies.Models
         {
             const short SEC_TO_MS = 1000;
             aTimer.Interval = sec * SEC_TO_MS;
+            aTimer.AutoReset = true;
             aTimer.Enabled = true;
         }
 
         public void StopTimer()
         {
+            aTimer.AutoReset = false;
             aTimer.Enabled = false;
         }
 
