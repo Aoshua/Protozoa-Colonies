@@ -40,7 +40,8 @@ namespace ProtozoaColonies.Models
 
 		public void PlaceCell(int x, int y, string color)//update a cell on clicks
 		{
-			
+			x = x + 1;
+			y = y + 1;
 			int offset = (y * size) + x;
 			globalDish[offset].color = color;
 			
@@ -194,7 +195,7 @@ namespace ProtozoaColonies.Models
 			{
 				if (!(cell.x == 0 || cell.x == (size - 1) || cell.y == 0 || cell.y == (size - 1)))
 				{
-					sharedDish.Add(new Cell((cell.x), (cell.y), cell.color));
+					sharedDish.Add(new Cell((cell.x-1), (cell.y-1), cell.color));
 				}
 			}
 
