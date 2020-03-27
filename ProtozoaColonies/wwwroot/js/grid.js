@@ -5,11 +5,12 @@ $(function () {
     $('#btnToggleStatus').click(function () {
         if ($(this).html() == 'Start') {
             $(this).html('Stop');
-            pauseGame();
+            startGame();
+
         }
         else {
             $(this).html('Start');
-            startGame();
+            pauseGame();
         }
     });
     $('#btnNext').click(function () {
