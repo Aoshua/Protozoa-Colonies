@@ -92,9 +92,9 @@ td {
 }
 
 /* REMOVE LATER: Shows grid from start */
-#gameContainer {
+/*#gameContainer {
     display: inline-grid;
-}
+}*/
 
 .control-panel {
     padding-bottom: 10px;
