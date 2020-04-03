@@ -6,7 +6,7 @@
 // todo fix IIS Express WithURL and Publish WithURL difference
 var connection = new signalR.HubConnectionBuilder()
     .configureLogging(signalR.LogLevel.Debug)
-    .withUrl("\pchub")
+    .withUrl("\pcdev/pchub") // When debugging, use .withUrl("\pchub")
     .build();
 
 // todo: Disable UI components until connection established
